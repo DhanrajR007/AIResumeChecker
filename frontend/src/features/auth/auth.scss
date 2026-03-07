@@ -1,0 +1,93 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+
+  .box {
+    background: rgba(40, 40, 40, 0.98);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #e2d8d8;
+    padding: 2.5rem 2rem 2rem 2rem;
+    border-radius: 1.2rem;
+    min-width: 340px;
+    box-shadow: 0 4px 32px 0 rgba(0,0,0,0.18), 0 1.5px 6px 0 rgba(0,0,0,0.10);
+    transition: box-shadow 0.2s;
+    margin: 0.5rem;
+
+    .Heading {
+      font-size: 2.1rem;
+      margin-bottom: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      width: 100%;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      width: 100%;
+      margin-bottom: 0.2rem;
+
+      label {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #bdbdbd;
+        margin-bottom: 0.1rem;
+      }
+      input {
+        padding: 0.8rem 1rem;
+        border-radius: 0.6rem;
+        border: 1.5px solid #353535;
+        background: #232323;
+        color: #e2d8d8;
+        font-size: 1rem;
+        outline: none;
+        transition: border 0.2s, box-shadow 0.2s;
+        width: 100%;
+
+        &:focus{
+            border: 1.5px solid #6c63ff;
+        box-shadow: 0 0 0 2px #6c63ff33;
+        background: #23232b;
+        }
+      }
+      
+    }
+    
+    .link {
+      font-size: 0.98rem;
+      color: #bdbdbd;
+      margin-top: 1.2rem;
+      text-align: center;
+    }
+    .Link {
+      color: #6c63ff;
+      font-weight: 500;
+      padding-left: 0.3rem;
+      text-decoration: none;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #fff;
+        text-decoration: underline;
+      }
+    }
+    
+  }
+  .minimal-form {
+    box-shadow: 0 4px 32px 0 rgba(0,0,0,0.18), 0 1.5px 6px 0 rgba(0,0,0,0.10);
+    background: rgba(40, 40, 40, 0.98);
+  }
+}

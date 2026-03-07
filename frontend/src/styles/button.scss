@@ -1,0 +1,17 @@
+.Button.primary {
+      margin-top: 0.5rem;
+      padding: 0.8rem 0;
+      border-radius: 0.6rem;
+      border: none;
+      background: linear-gradient(90deg, #6c63ff 0%, #5a55e0 100%);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px 0 rgba(108,99,255,0.10);
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .Button.primary:hover {
+      background: linear-gradient(90deg, #5a55e0 0%, #6c63ff 100%);
+      box-shadow: 0 4px 16px 0 rgba(108,99,255,0.18);
+    }
