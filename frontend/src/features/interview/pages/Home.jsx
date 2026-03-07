@@ -1,15 +1,17 @@
 import React from 'react';
-import '../../auth/auth.scss';
+import '../interview.scss';
+import { Link } from 'react-router';
 
 const Home = () => {
   return (
-    <main>
-      <div className="box minimal-form" style={{ minHeight: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-        <h1 className="Heading">Welcome to AI Resume Checker</h1>
-        <p style={{ marginTop: '1.5rem', color: '#bdbdbd', fontSize: '1.1rem', textAlign: 'center' }}>
-          This is a dummy home page.<br />
-          More features coming soon!
+    <main className="home-main-bg">
+      <div className="box home-card">
+        <h1 className="Heading">Welcome to <span className="brand-gradient">AI Resume Checker</span></h1>
+        <p className="home-desc">
+          Instantly analyze and improve your resume with AI.<br />
+          <span className="soon">More features coming soon!</span>
         </p>
+        <Link to="/login" className="Button primary home-cta">Get Started</Link>
       </div>
     </main>
   );
