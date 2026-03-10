@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router';
 import '../auth.scss';
 
 const Register = () => {
+  const [username, setUsername] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
   const onSubmit = (e) => {
     e.preventDefault();
+
   };
   return (
     <main>
@@ -13,15 +17,21 @@ const Register = () => {
         <form onSubmit={onSubmit} autoComplete="off">
           <div className="input-group">
             <label htmlFor="name">Username</label>
-            <input type="text" id="name" name="name" required placeholder="Enter your username" />
+            <input onChange={(e) => {
+              setUsername(e.target.value);
+            }} type="text" id="name" name="name" required placeholder="Enter your username" />
           </div>
           <div className="input-group">
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="Enter your email" />
+            <input onChange={(e) => {
+              setEmail(e.target.value);
+            }}  type="email" id="email" name="email" required placeholder="Enter your email" />
           </div>
           <div className="input-group">
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" name="password" required placeholder="Enter your password" />
+            <input onChange={(e) => {
+              setPassword(e.target.value);
+            }} type="password" id="password" name="password" required placeholder="Enter your password" />
           </div>
           <button className="Button primary" type="submit">Register</button>
         </form>
