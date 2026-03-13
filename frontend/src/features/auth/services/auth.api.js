@@ -27,7 +27,17 @@ const register = async ({username, email, password}) => {
   }
 };
 
+const logout = async ()=>{
+  try {
+    const response = await axiosInstance.get("/logout");
+    return response.data;
+  } catch (error) {
+    console.error("Logout failed", error);
+  }
+}
+
 export default {
   login,
   register,
+  logout
 };

@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../auth.context";
 import authApi from "../services/auth.api";
 export const useAuth = () => {
   const { user, setUser, loading, setLoading } = useContext(AuthContext);
-  const handleLogin = async (email, password) => {
+  const handleLogin = async ({email, password}) => {
     setLoading(true);
     try {
       const data = await authApi.login({ email, password });
@@ -26,7 +26,18 @@ export const useAuth = () => {
       setLoading(false);
     }
   };
-  return { loading, user, handleLogin, handleRegister };
+  const handleLogout =async () => {
+    setLoading(true);
+    try{
+        await authApi.logout();
+        setUser(null)
+    }catch(err){
+        console.error("Logout failed", err);
+    }finally{
+        setLoading(false);
+    }
+  };
+  return { loading, user, handleLogin, handleRegister ,handleLogout};
 };
 
 export default useAuth;
