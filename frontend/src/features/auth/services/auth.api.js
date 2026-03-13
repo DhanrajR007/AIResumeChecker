@@ -5,7 +5,7 @@ const axiosInstance = axios.create({
   withCredentials: true,
 });
 
-const login = async (email, password) => {
+const login = async ({email, password}) => {
   try {
     const response = await axiosInstance.post("/login", { email, password });
     return response.data;
@@ -14,7 +14,7 @@ const login = async (email, password) => {
   }
 };
 
-const register = async (username, email, password) => {
+const register = async ({username, email, password}) => {
   try {
     const response = await axiosInstance.post("/register", {
       username,

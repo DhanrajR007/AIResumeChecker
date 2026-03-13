@@ -1,19 +1,26 @@
 import React, { useState } from "react";
 import "../auth.scss";
-import { Link } from "react-router";
-import authApi from "../services/auth.api";
-import { AuthProvider } from "../auth.context";
+import { Link, useNavigate } from "react-router";;
+import useAuth from "../hooks/useAuth";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+  const { loading, handleLogin } = useAuth();
   const onSubmit = async (e) => {
     e.preventDefault();
-    const user = await authApi.login(email, password);
-    if(user){
-      AuthProvider.se
-         }
+    await handleLogin({ email, password });
+    navigate("/");
   };
+  if (loading) {
+    return (
+      <main>
+        <h1>Loading.......</h1>
+      </main>
+    );
+  }
   return (
     <main>
       <div className="box minimal-form">

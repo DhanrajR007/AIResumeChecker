@@ -1,15 +1,28 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router';
-import '../auth.scss';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router";
+import "../auth.scss";
+import useAuth from "../hooks/useAuth";
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const onSubmit = (e) => {
-    e.preventDefault();
 
+  const { loading, handleRegister } = useAuth();
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    await handleRegister({ username, email, password });
+    navigate("/");
   };
+  if (loading) {
+    return (
+      <main>
+        <h1>Loading.......</h1>
+      </main>
+    );
+  }
   return (
     <main>
       <div className="box minimal-form">
@@ -17,27 +30,52 @@ const Register = () => {
         <form onSubmit={onSubmit} autoComplete="off">
           <div className="input-group">
             <label htmlFor="name">Username</label>
-            <input onChange={(e) => {
-              setUsername(e.target.value);
-            }} type="text" id="name" name="name" required placeholder="Enter your username" />
+            <input
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Enter your username"
+            />
           </div>
           <div className="input-group">
             <label htmlFor="email">Email</label>
-            <input onChange={(e) => {
-              setEmail(e.target.value);
-            }}  type="email" id="email" name="email" required placeholder="Enter your email" />
+            <input
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Enter your email"
+            />
           </div>
           <div className="input-group">
             <label htmlFor="password">Password</label>
-            <input onChange={(e) => {
-              setPassword(e.target.value);
-            }} type="password" id="password" name="password" required placeholder="Enter your password" />
+            <input
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              type="password"
+              id="password"
+              name="password"
+              required
+              placeholder="Enter your password"
+            />
           </div>
-          <button className="Button primary" type="submit">Register</button>
+          <button className="Button primary" type="submit">
+            Register
+          </button>
         </form>
         <div className="link">
           <span>Already have an account?</span>
-          <Link to="/login" className="Link">Login</Link>
+          <Link to="/login" className="Link">
+            Login
+          </Link>
         </div>
       </div>
     </main>
