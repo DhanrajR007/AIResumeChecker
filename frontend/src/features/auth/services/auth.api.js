@@ -36,8 +36,19 @@ const logout = async ()=>{
   }
 }
 
+const getMe = async () => {
+  try{
+      const response = await axiosInstance.get("/get-me")
+      return response.data;
+  }catch(error){
+    console.error("Get me failed", error);
+  }
+  
+}
+
 export default {
   login,
   register,
-  logout
+  logout,
+  getMe
 };

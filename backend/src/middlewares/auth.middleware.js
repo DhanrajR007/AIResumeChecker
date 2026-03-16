@@ -1,7 +1,11 @@
 const jwt = require("jsonwebtoken");
 const blackListToken = require("../model/blacklistToken.model");
+
+
+
 async function authMiddleware(req, res, next) {
-  const token = req.cookies.token;
+  const token = req.cookies.token || req.headers["authorization"]?.split(" ")[1];
+  console.log("Token from middleware:", token);
   if (!token) {
     return res.status(401).json({
       message:
