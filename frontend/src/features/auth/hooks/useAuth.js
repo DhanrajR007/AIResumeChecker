@@ -39,17 +39,18 @@ export const useAuth = () => {
   };
 
   useEffect(() => {
-    const getandsetUser = async () => {
+    const getAndSetUser = async () => {
       try {
         const data = await authApi.getMe();
+        console.log("User data from getMe:", data.user);
         setUser(data.user);
-      } catch (error) {
-        console.error("Get me failed", error);
+      } catch (err) {
       } finally {
         setLoading(false);
       }
     };
-    getandsetUser();
+
+    getAndSetUser();
   }, []);
   return { loading, user, handleLogin, handleRegister, handleLogout };
 };
